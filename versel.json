@@ -2,24 +2,28 @@
     "builds": [
         {
             "src": "build_files.sh",
-            "use": "@vercel/static-build"
+            "use": "@vercel/static-build",
+            "config": {
+                "distDir": "staticfiles"
+            }
         },
         {
-            "src": "/pavel_sites/wsgi.py",
+            "src": "pavel_sites/wsgi.py",
             "use": "@vercel/python",
             "config": { 
-                "maxLambdaSize": "15mb" 
+                "maxLambdaSize": "15mb",
+                "runtime": "python3.11"
             }
         }
     ],
     "routes": [
         {
-            "src": "/(.*)",
-            "dest": "pavel_sites/wsgi.py"
-        },
-        {
             "src": "/static/(.*)",
             "dest": "/static/$1"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "pavel_sites/wsgi.py"
         }
     ]
-  }
+}

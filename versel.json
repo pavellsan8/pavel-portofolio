@@ -1,20 +1,25 @@
 {
-    "version": 2,
     "builds": [
-      {
-        "src": "pavel_sites/wsgi.py",
-        "use": "@vercel/python"
-      }
+        {
+            "src": "build_files.sh",
+            "use": "@vercel/static-build"
+        },
+        {
+            "src": "/pavel_sites/wsgi.py",
+            "use": "@vercel/python",
+            "config": { 
+                "maxLambdaSize": "15mb" 
+            }
+        }
     ],
     "routes": [
-      {
-        "src": "/static/(.*)",
-        "dest": "/static/$1"
-      },
-      {
-        "src": "/(.*)",
-        "dest": "pavel_sites/wsgi.py"
-      }
+        {
+            "src": "/(.*)",
+            "dest": "pavel_sites/wsgi.py"
+        },
+        {
+            "src": "/static/(.*)",
+            "dest": "/static/$1"
+        }
     ]
   }
-  

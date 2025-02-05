@@ -52,7 +52,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'pavel_sites.wsgi.application'
+WSGI_APPLICATION = 'pavel_sites.wsgi.app'
 
 DATABASES = {
     # 'default': {

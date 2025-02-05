@@ -2,22 +2,18 @@
     "version": 2,
     "builds": [
         {
-            "src": "pavel_sites/wsgi.py",
-            "use": "@vercel/python"
+            "src": "manage.py",
+            "use": "@vercel/python",
+            "config": {
+                "runtime": "python3.11",
+                "buildCommand": "python -m pip --version && pip install -r requirements.txt"
+            }
         }
     ],
     "routes": [
         {
-            "src": "/static/(.*)",
-            "dest": "/static/$1"
-        },
-        {
             "src": "/(.*)",
-            "dest": "pavel_sites/wsgi.py"
+            "dest": "manage.py"
         }
-    ],
-    "env": {
-        "PYTHON_VERSION": "3.11.0",
-        "DJANGO_SETTINGS_MODULE": "pavel_sites.settings"
-    }
+    ]
 }

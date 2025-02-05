@@ -11,7 +11,7 @@ environ.Env.read_env(BASE_DIR / '.env')
 
 SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('DEBUG', default=False)
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])  
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['.vercel.app'])
 
 INSTALLED_APPS = [
     # 'whitenoise.runserver_nonstatic',

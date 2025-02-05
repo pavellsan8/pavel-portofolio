@@ -2,8 +2,11 @@
     "version": 2,
     "builds": [
         {
-            "src": "pavel_sites/wsgi.py",
-            "use": "@vercel/python"
+            "src": "manage.py",
+            "use": "@vercel/python",
+            "config": {
+                "runtime": "python3.11"
+            }
         }
     ],
     "routes": [
@@ -13,7 +16,7 @@
         },
         {
             "src": "/(.*)",
-            "dest": "pavel_sites/wsgi.py"
+            "dest": "manage.py"
         }
     ]
 }

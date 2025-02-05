@@ -2,17 +2,22 @@
     "version": 2,
     "builds": [
         {
-            "src": "manage.py",
-            "use": "@vercel/python",
-            "config": {
-                "buildCommand": "./build.sh"
-            }
+            "src": "vercel-build.sh",
+            "use": "@vercel/python"
+        },
+        {
+            "src": "pavel_sites/wsgi.py",
+            "use": "@vercel/python"
         }
     ],
     "routes": [
         {
+            "src": "/static/(.*)",
+            "dest": "/static/$1"
+        },
+        {
             "src": "/(.*)",
-            "dest": "manage.py"
+            "dest": "pavel_sites/wsgi.py"
         }
     ]
 }

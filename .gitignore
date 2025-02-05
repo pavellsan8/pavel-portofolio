@@ -2,7 +2,7 @@
 .env
 
 # Django settings
-settings.py
+# settings.py
 
 # Python cache files
 __pycache__/

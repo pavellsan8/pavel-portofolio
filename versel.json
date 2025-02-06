@@ -1,11 +1,14 @@
 {
+    "version": 2,
     "builds": [
         {
-            "src": "pavel_sites/wsgi.py",
+            "src": "manage.py",
             "use": "@vercel/python",
-            "config": { 
+            "config": {
                 "maxLambdaSize": "15mb",
-                "runtime": "python3.11"
+                "runtime": "python3.11",
+                "buildCommand": "python manage.py collectstatic --noinput",
+                "wsgiApp": "pavel_sites.wsgi.application"
             }
         }
     ],
@@ -16,10 +19,7 @@
         },
         {
             "src": "/(.*)",
-            "dest": "pavel_sites/wsgi.py"
+            "dest": "manage.py"
         }
-    ],
-    "env": {
-        "PYTHON_VERSION": "3.11"
-    }
+    ]
 }
